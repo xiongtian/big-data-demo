@@ -34,6 +34,9 @@ public class MyConsumer {
         // 消费者组
         properties.put(ConsumerConfig.GROUP_ID_CONFIG, "bigdata");
 
+        // 重置消费者的offset
+        properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+
         KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(properties);
 
         // 订阅主题
