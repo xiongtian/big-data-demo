@@ -20,7 +20,7 @@ public class MyProducer {
 
         // 2、指定连接的Kafka集群
         // kafka集群，broker-list
-        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "hadoop102:9092");
+        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.16.12.104:9092");
 
         // 3、指定ACK应答级别
         properties.put(ProducerConfig.ACKS_CONFIG, "all");
@@ -29,7 +29,7 @@ public class MyProducer {
         properties.put("retries", 3);
 
         // 5、批次大小
-        properties.put("bitch.size", 16384);
+        properties.put("batch.size", 16384);
 
         // 6、等待时间
         properties.put("linger.ms", 1);
