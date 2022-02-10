@@ -18,7 +18,7 @@ public class StreamWordCount {
         // 创建流处理执行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         // 设置并行度
-        env.setParallelism(3);
+        //env.setParallelism(3);
 
         // 从文件中读取数据
 //        String inputPath = "D:\\mycode\\java_code\\big-data-demo\\flink-demo\\src\\main\\resources\\hello.txt";
@@ -34,9 +34,9 @@ public class StreamWordCount {
         DataStream<String> inputDataStream = env.socketTextStream(host, port);
 
         // 基于数据流进行转换计算
-        SingleOutputStreamOperator<Tuple2<String, Integer>> resultStram = inputDataStream.flatMap(new WordCount.MyFlatMapper())
+        SingleOutputStreamOperator<Tuple2<String, Integer>> resultStram = inputDataStream.flatMap(new WordCount.MyFlatMapper()).setParallelism(2)
                 .keyBy(0) // 按照当前
-                .sum(1);
+                .sum(1).setParallelism(2);
 
         resultStram.print();
 
