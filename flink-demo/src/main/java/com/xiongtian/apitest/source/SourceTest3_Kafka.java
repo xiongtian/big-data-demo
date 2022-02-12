@@ -17,7 +17,7 @@ public class SourceTest3_Kafka {
 
         // kafka 配置项
         Properties properties = new Properties();
-        properties.setProperty("bootstrap.servers", "hadoop:9092");
+        properties.setProperty("bootstrap.servers", "hadoop102:9092");
         properties.setProperty("group.id", "consumer-group");
         properties.setProperty("key.deserializer",
                 "org.apache.kafka.common.serialization.StringDeserializer");
@@ -26,7 +26,7 @@ public class SourceTest3_Kafka {
         properties.setProperty("auto.offset.reset", "latest");
 
         // 从文件读取数据
-        DataStream<String> dataStream = env.addSource(new FlinkKafkaConsumer011<String>("sensor", new SimpleStringSchema(), properties));
+        DataStream<String> dataStream = env.addSource(new FlinkKafkaConsumer011<String>("my-topic", new SimpleStringSchema(), properties));
 
 
         // 打印输出
