@@ -73,6 +73,9 @@ public class TransformTest4_MultipleStream {
 
         resultStream.print();
 
+        // 3.union联合多条流
+        highTempStream.union(lowTempStream,allTempStream);
+
         env.execute();
 
     }
